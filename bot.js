@@ -33,6 +33,18 @@ for (const file of readdirSync('./comandos/utiles')) {
   }
 }
 
+for (const file of readdirSync('./comandos/juegos')) {
+
+  if (file.endsWith(".js")) {
+
+    let fileName = file.substring(0, file.length - 3);
+
+    let fileContents = require(`./comandos/juegos/${file}`);
+
+    client.comandos.set(fileName, fileContents);
+  }
+}
+
 // <-- CONTROLADOR DE EVENTOS: -->
 
 for (const file of readdirSync('./eventos/')) {
